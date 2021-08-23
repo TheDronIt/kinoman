@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Киноман</title>
+	<meta charset="UTF-8">
+	<meta name="Description" content="Кино которое ты любишь"> 
+    <meta name="Keywords" content="Кино, Кинотеатр, Хабаровск, Киноман"> 
+    <meta property="og:title" content="Киноман" /> 
+    <meta property="og:description" content="Кино которое ты любишь" /> 
+    <meta property="og:image" content="{% static 'web/img/favicon.ico' %}" />
+    <link rel="icon" href="{% static 'web/img/favicon.ico' %}" sizes="32x32">  
+    <link href="{% static 'web/css/main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'web/css/plugin/swiper.css' %}"/>   
+    <!--<link href="{% static 'web/css/plugin/swiper.min.css' %}" rel="stylesheet">-->
+</head>
+<body>
+{% block content %}
+	<div class="header content">
+		<div class="logo">
+			Киноман
+		</div>
+		<div class="header-contact">
+			<div style="grid-column: 1/4;">
+				<a href="tel:88000000000" class="header-phone">
+					8 (800) 000-00-00
+				</a>
+			</div>
+			<div>
+				<a href="#">
+					<img src="{% static 'web/img/icons/vk-32x32.png' %}" alt="" class="header__icon">
+				</a>
+			</div>
+			<div>
+				<a href="#">
+					<img src="{% static 'web/img/icons/instagram-32x32.png' %}" alt="" class="header__icon">
+				</a>
+			</div>
+			<div>
+				<a href="#">
+					<img src="{% static 'web/img/icons/whatsapp-32x32.png' %}" alt="	" class="header__icon">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="swiper content">
+		
+		<div class="swiper-button-prev"></div>
+	    <div class="swiper-container mySwiper" style="max-width: 1100px;">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide" style="background-image: url({% static 'web/img/swiper/film.jpg' %})">
+		        	<a href="#" class="swiper-slide__button">
+		        		123123123
+		        	</a>
+		        </div>
+		        <div class="swiper-slide" style="background-image: url({% static 'web/img/swiper/film2.jpg' %})">Slide 2</div>
+		        <div class="swiper-slide" style="background-image: url({% static 'web/img/swiper/film3.jpg' %})">Slide 3</div>
+		    </div>
+		</div>
+		<div class="swiper-button-next"></div>
+		
+	</div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3500000/*3500*/,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+{% endblock %}
+</body>
+</html>
