@@ -4,7 +4,9 @@ body
 	padding: 0;
 	background-color: #1C1C1E;
 	padding: 0 25px;
+	font-family: Roboto-Medium;
 }
+
 @font-face 
 {
   font-family: "StTransmission";
@@ -25,7 +27,14 @@ a
 	text-decoration: none;
 	color: inherit;
 }
-.content
+h1
+{
+	color: white;
+	font-family: Roboto-Black;
+	font-size: 1.75rem;
+	margin: 40px 0 25px 0;
+}
+.container
 {
 	max-width: 1100px;
 	margin: auto;
@@ -44,6 +53,16 @@ a
 	font-size: 2.5rem;	
 	cursor: default;
 }
+.link
+{
+	color: #EBEBF599;
+	transition: 0.3s;
+}
+.link:hover
+{
+	color: white;
+}
+
 .header-contact
 {
 	display: grid;
@@ -72,4 +91,248 @@ a
 .header__icon:hover
 {
 	filter: none;	
+}
+
+.movie-container
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 530px);
+	justify-content: center;
+	grid-gap: 40px;
+}
+.calendar
+{
+	font-size: 0.85rem;
+	text-align: center;
+	margin-top: 40px;
+	display: grid;
+	justify-content: space-between;
+	grid-template-columns: repeat(auto-fit, 130px);
+	grid-row-gap: 15px;
+}
+.movie-card
+{
+	width: 100%;
+	height: 320px;
+	background-color: #272729;
+	display: grid;
+	grid-template-columns: 1.2fr 2fr;
+	border-radius: 15px;
+	color: white;
+}
+.movie-card_banner
+{
+	width: 90%;
+	height: 90%;
+	/*background-color: #A8A8A8;*/
+	margin: auto;
+	position: relative;
+	left: auto;
+	right: 20px;
+	bottom: 25px;
+	top: auto;
+	border-radius: 15px;
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+	transition: 1s;
+}
+.movie-card_banner:hover
+{
+	transform: scale(1.1);
+}
+.move-card_age
+{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 10px;
+	position: relative;
+	left: 10px;
+	top: 10px;
+	right: auto;
+	bottom: auto;
+	background-color: rgba(49, 49, 51, 0.9);
+	font-family: Roboto-Medium;
+	text-align: center;
+}
+.move-card_play
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	margin: 80px auto 0 auto;
+	background-color: rgba(49, 49, 51, 0.85);
+	transition: 0.7s;
+	cursor: pointer;
+	
+}
+.move-card_play:hover .move-card_play__icon
+{
+	border-color: transparent transparent transparent black;
+}
+.move-card_play:hover
+{
+	background-color: white;
+}
+.move-card_play__icon
+{
+	position: relative;
+	left: 14px;
+	top: 12px;
+	width: 0;
+	height: 0;
+	border: solid;
+	border-color: transparent transparent transparent white;
+	border-width: 8px 8px 8px 14px;
+	transition: 0.7s;
+}
+
+
+
+
+#trailer-popup
+{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+	left: 0;
+	color: white;
+	z-index: 10;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.4s ease 0s;
+}
+#trailer-popup:target
+{
+	opacity: 1;
+	visibility: visible;
+	
+}
+.trailer-popup__body
+{
+	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+.trailer-popup__content
+{
+	background-color: white;
+	max-width: 800px;
+	border-radius: 15px;
+	overflow: hidden;
+	min-width: 600px;
+	
+}
+.trailer-popup__close
+{
+	font-family: Arial;
+	font-weight: bold;
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	color: black;
+}
+.trailer-popup__headline
+{
+	position: relative;
+	background-color: white;
+	padding: 0;
+	color: black;
+	padding: 5px 10px;
+	font-size: 1.5rem;
+}
+
+
+
+
+
+.movie-card-info
+{
+	display: grid;
+	grid-template-rows: auto 220px;
+}
+.movie-card-info__text
+{
+	display: grid;
+	grid-template-rows: 0.8fr auto auto;
+}
+.movie-card-info_name
+{
+	font-family: Roboto-Black;
+	font-size: 1.3rem;
+}
+.movie-card-info_category
+{
+	font-family: Roboto-Medium;
+	font-size: 0.9rem;
+	color: #EBEBF599;
+}
+.movie-card-info_time-card__container
+{
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 90px);
+	grid-column-gap:20px;
+
+}
+.movie-card-info_time-card
+{
+	width: 90px;
+	height: 90px;
+	background-color: #313133;
+	border-radius: 15px;
+	text-align: center;
+	display: grid;
+	grid-template-rows: 1fr auto auto auto 1fr;
+	font-family: Roboto-Medium;
+}
+.movie-card-info_time-card_time
+{
+	font-size: 1.3rem;
+	margin-bottom: 6px;
+}
+.movie-card-info_time-card_price
+{
+	font-size: 1rem;
+	color: #EBEBF599;
+}
+.movie-card-info_time-card_hall
+{
+	font-size: 1rem;
+	color: #EBEBF599;
+}
+.footer 
+{
+  width: 100%;
+  min-height: 50px;
+  border-top: 2px solid #EBEBF599;
+  margin-top: 80px;
+  padding: 20px 0;
+  display: grid;
+  color: #EBEBF599;
+  grid-template-columns: auto auto;
+  
+}
+.footer_about_headline
+{
+	color: white;
+	font-size: 1.5rem;
+	margin-bottom: 10px; 
+}
+.footer_about_element
+{
+	display: block;
+	margin: 5px 0;
+}
+.footer_created-by
+{
+	margin-top: 30px;
+	grid-column: 1/8;
+	text-align: center;
 }

@@ -16,73 +16,108 @@
 </head>
 <body>
 {% block content %}
-	<div class="header content">
-		<div class="logo">
-			Киноман
-		</div>
-		<div class="header-contact">
-			<div style="grid-column: 1/4;">
-				<a href="tel:88000000000" class="header-phone">
-					8 (800) 000-00-00
-				</a>
-			</div>
-			<div>
-				<a href="#">
-					<img src="{% static 'web/img/icons/vk-32x32.png' %}" alt="" class="header__icon">
-				</a>
-			</div>
-			<div>
-				<a href="#">
-					<img src="{% static 'web/img/icons/instagram-32x32.png' %}" alt="" class="header__icon">
-				</a>
-			</div>
-			<div>
-				<a href="#">
-					<img src="{% static 'web/img/icons/whatsapp-32x32.png' %}" alt="	" class="header__icon">
-				</a>
-			</div>
-		</div>
-	</div>
 
-	<div class="swiper content">
-		
-		<div class="swiper-button-prev"></div>
-	    <div class="swiper-container mySwiper" style="max-width: 1100px;">
-		    <div class="swiper-wrapper">
-		        <div class="swiper-slide" style="background-image: url({% static 'web/img/swiper/film.jpg' %})">
-		        	<a href="#" class="swiper-slide__button">
-		        		123123123
-		        	</a>
-		        </div>
-		        <div class="swiper-slide" style="background-image: url({% static 'web/img/swiper/film2.jpg' %})">Slide 2</div>
-		        <div class="swiper-slide" style="background-image: url({% static 'web/img/swiper/film3.jpg' %})">Slide 3</div>
-		    </div>
-		</div>
-		<div class="swiper-button-next"></div>
-		
-	</div>
+	{% include 'include/header.html' %}
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	{% include 'include/swiper.html' %}
 
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3500000/*3500*/,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
+    <div class="calendar container">
+    	{% for day in calendar %}
+	    <a href="{{day.Link}}" class="link">
+	    	{{day.Day}}, {{day.Day_of_week}}
+	    </a>
+		{% endfor %}
+    </div>
+
+    <div class="container">
+    	<h1>Сегодня в кино</h1>
+
+    	<div class="movie-container">
+
+    	{% for film in film %}
+
+    		<div class="movie-card">
+    			<div class="movie-card_banner" style="background-image: url({{film.Image.url}})">
+    				{% if film.Trailer %}
+
+    				<div class="move-card_age">{{film.Age}}</div>
+    				<a href="#trailer-popup">
+	    				<div class="move-card_play">
+	    					<div class="move-card_play__icon"></div>
+	    				</div>
+    				</a>
+    				
+    				
+
+    				{% endif %}
+    			</div>
+
+    			<div class="movie-card-info">
+    				<div class="movie-card-info__text">
+    					<div></div>
+    					<div class="movie-card-info_name">{{film.Name}}</div>
+    					<div class="movie-card-info_category">{{film.Category}}</div>
+    				</div>
+    				<div class="movie-card-info_time-card__container">
+
+   					{% for seance in seance %}
+   						{% if seance.FilmName == film.Name %}		
+    				 	<a href="#">
+	    				 	<div class="movie-card-info_time-card">
+	    				 		<div></div>
+	    				 		<div class="movie-card-info_time-card_time">
+	    				 			{{seance.SeanceTime}}
+	    				 		</div>
+	    				 		<div class="movie-card-info_time-card_price">
+	    				 			{{seance.Price}} ₽
+	    				 		</div>
+	    				 		<div class="movie-card-info_time-card_hall">
+	    				 			{{seance.Hall}}
+	    				 		</div>
+	    				 		<div></div>
+	    				 	</div>
+    				 	</a>
+    				 	{% endif %}
+    				{% endfor %}
+
+
+
+
+    				</div>
+    			</div>
+    			<!--{% if film.Trailer %} -->
+    			<div id="trailer-popup">
+					<div class="trailer-popup__body">
+						<div class="trailer-popup__content">
+							<div class="trailer-popup__headline">
+								{{film.Name}}
+								<a href="#" class="trailer-popup__close">
+								x
+								</a>
+							</div>
+							<div class="trailer-popup__video">
+								<video width='600' controls>
+									<source src='/media/{{ film.Trailer }}' type='video/mp4'>12
+								</video>			
+							</div>
+						</div>
+					</div>
+    			</div>
+    			<!-- {% endif %} -->
+    		</div>
+
+    	{% endfor %}
+
+    	</div>
+    	
+
+
+    </div>
+
+    {% include 'include/footer.html' %}
+
+
+
 {% endblock %}
 </body>
 </html>
